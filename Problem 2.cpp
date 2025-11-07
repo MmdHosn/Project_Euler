@@ -10,7 +10,7 @@ int main()
     cout << "Output:" << endl;
     while (T--)
     {
-        int N;
+        long long N;
         cin >> N;
         cout << Even_Fib_Adder(N) << endl;
     }
