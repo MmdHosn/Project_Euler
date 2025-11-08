@@ -1,7 +1,7 @@
 #include <iostream>
 
 using namespace std;
-
+int Biggest_Prime(int Number);
 int main()
 {
     int T;
@@ -11,7 +11,21 @@ int main()
     {
         int N;
         cin >> N;
-        cout << N << endl;
+        cout << Biggest_Prime(N) << endl;
     }
     return 0;
+}
+
+int Biggest_Prime(int Number)
+{
+    for (int i = 2; i * i <= Number; i++)
+    {
+        while (Number % i == 0)
+        {
+            Number /= i;
+        }
+        if (Number == 1)
+            return i;
+    }
+    return Number;
 }
