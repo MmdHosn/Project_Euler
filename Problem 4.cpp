@@ -18,7 +18,7 @@ int main()
     {
         int N;
         cin >> N;
-        cout << (Is_6Digit_Palindrome(N) ? "true" : "false") << endl;
+        cout << (Is_Mult_Two_3Digit(N) ? "true" : "false") << endl;
     }
     return 0;
 }
@@ -38,6 +38,20 @@ bool Is_6Digit_Palindrome(int Number)
         }
         if (First_3Digits_Inverse == Second_3Digits)
             return true;
+    }
+    return false;
+}
+
+bool Is_Mult_Two_3Digit(int Number)
+{
+    for (int i = 282; i < 1000; i++)
+    {
+        int Num_Mod_i = Number % i;
+        int Num_div_i = Number / i;
+        if (Num_Mod_i == 0 && 100 < Num_div_i && Num_div_i < 1000)
+        {
+            return true;
+        }
     }
     return false;
 }
