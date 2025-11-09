@@ -13,14 +13,29 @@ int main()
 {
     int T;
     cin >> T;
-    cout << " Output:" << endl;
+    // cout << " Output:" << endl;
     while (T--)
     {
         int N;
         cin >> N;
-        cout << (Is_Mult_Two_3Digit(N) ? "true" : "false") << endl;
+        // cout << (Is_Mult_Two_3Digit(N) ? "true" : "false") << endl;
+        cout << Biggest_Palindrome(N) << endl;
     }
     return 0;
+}
+
+int Biggest_Palindrome(int Number)
+{
+    for (int i = Number; i > 100000; i--)
+    {
+        if (Is_6Digit_Palindrome(i))
+        {
+            if (Is_Mult_Two_3Digit(i))
+            {
+                return i;
+            }
+        }
+    }
 }
 
 bool Is_6Digit_Palindrome(int Number)
@@ -44,7 +59,7 @@ bool Is_6Digit_Palindrome(int Number)
 
 bool Is_Mult_Two_3Digit(int Number)
 {
-    for (int i = 282; i < 1000; i++)
+    for (int i = 101; i < 1000; i++)
     {
         int Num_Mod_i = Number % i;
         int Num_div_i = Number / i;
