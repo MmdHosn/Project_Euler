@@ -3,29 +3,28 @@
 
 using namespace std;
 
-void Sieve_Erathosthenes(vector<int> &prime, int Max);
+void Sieve_Erathosthenes(vector<int> &primes, int Max);
+
+int LCM(const vector<int> &primes, int Number);
+
+vector<int> prime;
 
 int main()
 {
     int T;
     cin >> T;
     cout << "Output:" << endl;
-    vector<int> prime;
-    Sieve_Erathosthenes(prime, 300);
-    for (auto i : prime)
-    {
-        cout << i << endl;
-    }
+    Sieve_Erathosthenes(prime, 40);
     while (T--)
     {
         int N;
         cin >> N;
-        cout << N << endl;
+        cout << LCM(prime, N) << endl;
     }
     return 0;
 }
 
-void Sieve_Erathosthenes(vector<int> &prime, int Max)
+void Sieve_Erathosthenes(vector<int> &primes, int Max)
 {
     vector<bool> isPrime(Max + 1, true);
 
@@ -45,7 +44,22 @@ void Sieve_Erathosthenes(vector<int> &prime, int Max)
         if (isPrime[i])
         {
 
-            prime.push_back(i);
+            primes.push_back(i);
         }
     }
+}
+
+int LCM(const vector<int> &primes, int Number)
+{
+    int multiply = 1;
+    for (int i : primes)
+    {
+        int tmp = Number;
+        while (i <= tmp)
+        {
+            multiply *= i;
+            tmp /= i;
+        }
+    }
+    return multiply;
 }
