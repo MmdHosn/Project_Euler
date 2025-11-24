@@ -1,3 +1,4 @@
+#include <cmath>
 #include <iostream>
 
 using namespace std;
@@ -27,16 +28,14 @@ bool is_pythagorean(int a, int b, int c)
 int pythagorean_triplet_Max(int Number)
 {
     int Max = -1;
-    for (int i = 3; i <= Number / 3; i++)
+    // a + b + c = Number and abc = Max
+    for (int i = 1; i <= Number / 3; i++)
     {
-        int j = i + 1, k = Number - i - j;
-        while (j < k)
+        for (int j = i + 1; i + j <= 2 * Number / 3; j++)
         {
-            if (is_pythagorean(i, j, k))
-            {
-                Max = (Max < i * j * k) ? i * j * k : Max;
-            }
-            j++;
+            int k = Number - i - j;
+            if (is_pythagorean(i, j, k) && Max < i * j * k)
+                Max = i * j * k;
         }
     }
     return Max;
